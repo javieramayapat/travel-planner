@@ -11,3 +11,23 @@ services:
             - .:/app
         ports:
             - "8000:8000"
+        links:
+            - "postgresql_trips:postgresql_trips"
+        depends_on:
+            - postgresql_trips
+
+    postgresql_trips:
+        container_name: postgresql_trips
+        image: postgres:14
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        volumes:
+            - ./db/:/docker-entrypoint-initdb.d
+            - pgdata:/var/lib/postgres/datadb
+
+volumes:
+    pgdata: 
