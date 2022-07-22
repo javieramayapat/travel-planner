@@ -24,3 +24,6 @@ psycopg2==2.9.3
 
 #Autopep8
 autopep8==1.6.0
+
+# Request
+requests==2.28.1
