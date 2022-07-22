@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status, Path, Depends
+from fastapi import APIRouter, Body, HTTPException, status, Path, Depends
 from sqlalchemy.orm import Session
 
 from ..dependencies import get_db
@@ -24,6 +24,6 @@ def get_trip_detail(db: Session = Depends(get_db), trip_id: int = Path(..., gt=0
     return trip
 
 
-@router.post(path="/", status_code=status.HTTP_201_CREATED)
-def create_trip():
-    pass
+@router.post(path="/", response_model=trip_schema.TripOut, status_code=status.HTTP_201_CREATED)
+def create_trip(db: Session = Depends(get_db), trip: trip_schema.TripCreate = Body(...)):
+    return trip_service.create_trip(db=db, trip=trip)
