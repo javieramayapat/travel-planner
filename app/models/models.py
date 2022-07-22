@@ -1,8 +1,10 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, TIMESTAMP
 from sqlalchemy.orm import relationship
 
+from ..config.database import Base
 
-class User:
+
+class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
@@ -15,7 +17,7 @@ class User:
     trips = relationship("Trips", back_populates="users")
 
 
-class Trip:
+class Trip(Base):
     __tablename__ = "trips"
 
     id = Column(Integer, primary_key=True)
