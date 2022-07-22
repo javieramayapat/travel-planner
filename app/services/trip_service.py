@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from ..models import Trip
+from ..models.models import Trip
 
 
 def get_trips(db: Session):
