@@ -14,7 +14,7 @@ class User(Base):
     email = Column(String(150), nullable=False)
     password = Column(String(50), nullable=False)
 
-    trips = relationship("Trip", back_populates="users")
+    trips = relationship("Trip")
 
 
 class Trip(Base):
@@ -25,6 +25,4 @@ class Trip(Base):
     destination_name = Column(String(400), nullable=False)
     departure_date = Column(TIMESTAMP, nullable=False)
     arrival_date = Column(TIMESTAMP, nullable=False)
-    user_id = Column(Integer, ForeignKey("users.id"))
-
-    users = relationship("User", back_populates="trips")
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
