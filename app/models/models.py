@@ -22,7 +22,7 @@ class Trip(Base):
 
     id = Column(Integer, primary_key=True)
     origin_name = Column(String(100), nullable=False)
-    destination_name = Column(String(400), nullable=False)
+    destination_name = Column(String(100), nullable=False)
     departure_date = Column(TIMESTAMP, nullable=False)
     arrival_date = Column(TIMESTAMP, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)

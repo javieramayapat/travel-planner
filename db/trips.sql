@@ -18,7 +18,7 @@ CREATE TABLE trips (
     id bigserial NOT NULL,
     user_id bigint NOT NULL,
     origin_name VARCHAR(100) NOT NULL,
-    destination_name VARCHAR(10) NOT NULL,
+    destination_name VARCHAR(100) NOT NULL,
     departure_date timestamp  NOT NULL,
     arrival_date timestamp  NOT NULL,
     PRIMARY KEY (id),
