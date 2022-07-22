@@ -1,7 +1,13 @@
 from fastapi import FastAPI, status
 from typing import Dict
 
+from .models import models
+from .config.database import engine
 from .routers import trips_router
+
+
+models.Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(title="📑 Travel Planner API 📑",
               version="1.0",
