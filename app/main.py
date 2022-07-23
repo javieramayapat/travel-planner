@@ -3,7 +3,7 @@ from typing import Dict
 
 from .models import models
 from .config.database import engine
-from .routers import trips_router
+from .routers import trips_router, forecast_weater_router
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -20,3 +20,4 @@ def index() -> Dict[str, str]:
 
 
 app.include_router(trips_router.router, prefix="/api/v1")
+app.include_router(forecast_weater_router.router, prefix="/api/v1")
